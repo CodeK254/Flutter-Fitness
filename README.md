@@ -16,6 +16,6 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 <span>
-<img src="images/one.jpg" style="float: left;">
-<img src="images/two.jpg" style="float: right;">
+<img src="images/one.jpg" style="float: left;" width="500">
+<img src="images/two.jpg" style="float: right;" width="500">
 </span>
