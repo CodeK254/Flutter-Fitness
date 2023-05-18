@@ -1,5 +1,10 @@
 # Flutter Fitness App
 
+## Description
+---
+This fitness app UI is a sample design amoung various in which one may opt to make a fitness app out of.
+It uses some basic day-to-day Flutter widgets and packages. Feel free to take a *"looksee"* you may find it interesting. 
+
 ## Packages Used
 ---
 - flutter_animate: ^4.1.1+1
