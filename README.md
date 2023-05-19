@@ -136,3 +136,8 @@ class WorkoutPlan extends StatelessWidget {
 ```
 
 ## Sample Work
+---
+  
+https://github.com/CodeK254/Flutter-Fitness/assets/102378729/2c9111e6-a5f5-4163-b89a-d742a89e2599
+
+
