@@ -136,4 +136,3 @@ class WorkoutPlan extends StatelessWidget {
 ```
 
 ## Sample Work
-[label](images/display.mp4)
