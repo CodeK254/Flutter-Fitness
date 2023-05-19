@@ -136,4 +136,4 @@ class WorkoutPlan extends StatelessWidget {
 ```
 
 ## Sample Work
-<video href="images/display.mp4" height="1069" width="500"> </video>
+<video src="images/display.mp4" height="1069" width="500"> </video>
