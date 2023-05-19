@@ -78,9 +78,9 @@ class HomePage extends StatelessWidget {
               const BeginnerHomePage(homeImage: "beginner_home.jpg", difficulty: "Beginner", gymImage: "beginner.jpg")
             :
             homeController.tabbarIndex.value == 1 ?
-              const BeginnerHomePage(homeImage: "intermediate_home.jpg", difficulty: "Beginner", gymImage: "intermediate.jpg")
+              const BeginnerHomePage(homeImage: "intermediate_home.jpg", difficulty: "Intermediate", gymImage: "intermediate.jpg")
             :
-              const BeginnerHomePage(homeImage: "pro_home.jpg", difficulty: "Beginner", gymImage: "pro.jpg"),
+              const BeginnerHomePage(homeImage: "pro_home.jpg", difficulty: "Professional", gymImage: "pro.jpg"),
           ],
         ),
       ),

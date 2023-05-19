@@ -19,109 +19,103 @@ class IntroductionScreen extends StatelessWidget {
             child: CarouselSlider(
               carouselController: introController.carouselController,
               items: [
-                ...List.generate(
-                  introController.carouselItems.length - 1, 
-                  (index) => Stack(
-                    children: [
-                      Container(
+                Stack(
+                  children: [
+                    Obx(
+                      () => Container(
                         height: MediaQuery.of(context).size.height,
                         width: double.infinity,
                         color: Colors.white,
-                        child: Image(
-                          image: AssetImage("assets/${introController.carouselItems[index]}"),
-                          opacity: const AlwaysStoppedAnimation(.5),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Image(
-                              image: AssetImage("assets/fitness.png"),
-                            ),
-                            const SizedBox(height: 10),
-                            CustomText(
-                              text: "Go Hard or Go Home",
-                              fontSize: 30,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              textAlign: TextAlign.center,
+                        child: CarouselSlider(
+                          items: [
+                            Image(
+                              image: AssetImage("assets/${introController.carouselItems[introController.initialPage.value]}"),
+                              opacity: const AlwaysStoppedAnimation(.5),
+                              fit: BoxFit.cover,
                             ),
                           ],
+                          options: CarouselOptions(
+                            initialPage: introController.initialPage.value,
+                            onPageChanged: (index, reason) {
+                              if(introController.initialPage.value >= 2){
+                                introController.initialPage.value = 0;
+                              } else {
+                                ++introController.initialPage.value;
+                              }
+                            },
+                            autoPlay: true,
+                            autoPlayInterval: const Duration(seconds: 10),
+                            autoPlayAnimationDuration: const Duration(seconds: 5),
+                            height: MediaQuery.of(context).size.height,
+                            viewportFraction: 1,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Stack(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: double.infinity,
-                      color: Colors.white,
-                      child: Image(
-                        image: AssetImage("assets/${introController.carouselItems.last}"),
-                        opacity: const AlwaysStoppedAnimation(.5),
-                        fit: BoxFit.cover,
                       ),
                     ),
                     Center(
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const Image(
                             image: AssetImage("assets/fitness.png"),
                           ),
+                          const SizedBox(height: 10),
                           CustomText(
                             text: "Go Hard or Go Home",
-                            fontSize: 30,
+                            fontSize: 20,
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 10),
-                          AlertDialog(
-                            title: CustomText(
-                              text: "Get Started!!!",
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: blueCustom,
-                            ),
-                            content: CustomText(
-                              text: "Skip the tour and jump into the APP?",
-                              fontSize: 15,
-                              color: darkGreyCustom,
-                            ),
-                            actions: [
-                              ElevatedButton(
-                                onPressed: (){
-                                  introController.initialPage.value = 0;
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red,
-                                ), 
-                                child: CustomText(
-                                  text: "No",
-                                  fontSize: 15,
-                                  color: whiteCustom,
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.3),
+                          GestureDetector(
+                            onTap: (){
+                              Get.offAllNamed("/");
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade100,
+                                borderRadius: BorderRadius.circular(12),
+                                // shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    offset: Offset(-5, -5),
+                                    color: Colors.white,
+                                    blurRadius: 12,
+                                    spreadRadius: -5,
+                                  ),
+                                  BoxShadow(
+                                    offset: Offset(5, 5),
+                                    color: Colors.grey.shade800,
+                                    blurRadius: 12,
+                                    spreadRadius: 1,
+                                  ),
+                                ],
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    Colors.grey.shade200,
+                                    Colors.grey.shade400,
+                                    Colors.grey,
+                                    Colors.grey.shade700,
+                                  ]
                                 )
                               ),
-                              ElevatedButton(
-                                onPressed: (){
-                                  Get.offAllNamed("/");
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blueGrey,
-                                ), 
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 15,
+                                ),
                                 child: CustomText(
-                                  text: "Yes",
-                                  fontSize: 15,
+                                  text: "Get Started",
+                                  fontSize: 23,
                                   color: whiteCustom,
-                                )
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ],
+                            ),
                           ),
                         ],
                       ),
@@ -161,8 +155,8 @@ class IntroductionScreen extends StatelessWidget {
                         radius: introController.initialPage.value != index ? 7 : 10,
                         backgroundColor: introController.initialPage.value == index ? Colors.white : Colors.grey[200],
                       ),
-                    )
-                  )
+                    ),
+                  ),
                 ],
               ),
             )
